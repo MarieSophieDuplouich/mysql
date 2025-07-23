@@ -67,6 +67,30 @@ Affichez la couleur choisie sur la page en background-color. utiliser isset pour
     ?>
 
     <!-- <p> Hello <?= $prenom ?> ! </p> -->
+
+<!-- 
+Exercice 3
+Créez un formulaire en method GET demandant l'âge de l'utilisateur. Affichez un message différent selon que l'âge est supérieur ou inférieur à 18 ans.
+
+Astuce : Attention à toujours vérifier l'existence d'une clé avant de l'utiliser : -->
+
+<?php
+
+if (isset($_GET['nom'])) {
+    // Utiliser $_GET['nom']
+}
+?>
+
+<form action="" method="get">
+    <input type="text" name="nom" placeholder="Entrez votre nom">
+    <button type="submit">Envoyer</button>
+</form>
+
+si ton âge est supérieur à 18 ans alors tu es majeur
+sinon tu es mineur
+
+
+
 </body>
 
 </html>
