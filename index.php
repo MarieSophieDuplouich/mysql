@@ -11,25 +11,26 @@
 
     // $_GET['nom']  
 
-    $colorMap = [
-        'vert' => 'green',
-        'bleu' => 'blue',
-        'rouge' => 'red'
-    ];
-   $css = $colorMap [$_GET['couleur']];
+//     $colorMap = [
+//         'vert' => 'green',
+//         'bleu' => 'blue',
+//         'rouge' => 'red'
+//     ];
+//    $css = $colorMap [$_GET['couleur']];
 
     // This will evaluate to TRUE so the text will be printed.
-    if (isset($_GET['couleur']) && isset($colorMap)) {
+    // if (isset($_GET['couleur']) && isset($colorMap)) {
 
-        echo '<a href="index.php?couleur=vert" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">Vert</a>';
-        echo '<a href="index.php?couleur=bleu" style="background-color:' .    $css . ';text-align : center; padding-top: 50px;">bleu</a>';
-        echo '<a href="index.php?couleur=rouge" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">rouge</a>';
-    }
+    //     echo '<a href="index.php?couleur=vert" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">Vert</a>';
+    //     echo '<a href="index.php?couleur=bleu" style="background-color:' .    $css . ';text-align : center; padding-top: 50px;">bleu</a>';
+    //     echo '<a href="index.php?couleur=rouge" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">rouge</a>';
+    // }
 
     // var_dump($bgColor);
     ?>
 
-<body style="background-color: <?=$css ?>; text-align : center; padding-top: 50px;">
+<!-- <body style="background-color: <?=$css ?>; text-align : center; padding-top: 50px;"> -->
+<body>
 
     <!-- <a href="page.php?nom=Jean&age=25">Voir profil</a> -->
     <?php
@@ -76,18 +77,24 @@ Astuce : Attention à toujours vérifier l'existence d'une clé avant de l'utili
 
 <?php
 
-if (isset($_GET['nom'])) {
-    // Utiliser $_GET['nom']
+if (isset($_GET['age']> 18)) {
+        
+          echo "tu es majeur";
+}
+else{
+   
+    echo "tu es mineur";
 }
 ?>
 
 <form action="" method="get">
-    <input type="text" name="nom" placeholder="Entrez votre nom">
+    <label for="age">Entrez votre âge</label>
+    <input type="text" name="age" placeholder="Entrez votre âge " <?=$_GET['age']?> >
+
     <button type="submit">Envoyer</button>
 </form>
 
-si ton âge est supérieur à 18 ans alors tu es majeur
-sinon tu es mineur
+<?php var_dump($_GET['age']);?>
 
 
 
