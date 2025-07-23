@@ -66,6 +66,19 @@ Le texte doit être affiché dans la couleur choisie par l'utilisateur (utilisez
 
 La couleur doit rester affichée même après un rechargement de la page ! -->
 
+<?php 
+session_start();
+$_SESSION['couleur'] = 'Billy';
+
+var_dump($_SESSION); ?>
+
+<form action="autre-page.php" method="get">
+    <input type="text" name="age" placeholder="Entrez votre âge " <?=$_GET['age']?> >
+    <input type="text" name="name" placeholder="Entrez votre nom " <?=$_GET['name']?> >
+
+    <button type="submit">Envoyer</button>
+</form>
+
 
 
 </body>
