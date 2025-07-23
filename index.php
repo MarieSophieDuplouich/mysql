@@ -77,15 +77,21 @@ Astuce : Attention à toujours vérifier l'existence d'une clé avant de l'utili
 
 <?php
 
-if (isset($_GET['age']> 18)) {
-        
-          echo "tu es majeur";
-}
-else{
+if (isset($_GET['age']) ) {
+         if ( $_GET['age']> 18){
+  echo "tu es majeur";
+
+         }
+         
+         else{
    
     echo "tu es mineur";
 }
+}
 ?>
+        
+
+
 
 <form action="" method="get">
     <label for="age">Entrez votre âge</label>
@@ -94,7 +100,7 @@ else{
     <button type="submit">Envoyer</button>
 </form>
 
-<?php var_dump($_GET['age']);?>
+
 
 
 
