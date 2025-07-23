@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
-<!-- Il faut toujours démarrer une session avant de pouvoir utiliser le tableau $_SESSION, utilisez la session_start() au début de votre fichier PHP :
+
+    <!-- Il faut toujours démarrer une session avant de pouvoir utiliser le tableau $_SESSION, utilisez la session_start() au début de votre fichier PHP :
 index.php
 
 <?php
@@ -37,20 +39,21 @@ index.php
 // session_start();
 // // Afficher les données de session
 // var_dump($_SESSION);
-// ?>
+// 
+?>
 
 Rajoutez un lien vers autre-page.php et accédez à autre-page.php dans votre navigateur. Vous devriez voir les données de session affichées, confirmant que les données sont partagées entre les pages. index.php
  <?php
-// session_start();
-// // Stocker des données dans la session
-// $_SESSION['username'] = 'JohnDoe';
-// $_SESSION['role'] = 'admin';
-// var_dump($_SESSION);
-?>
+    // session_start();
+    // // Stocker des données dans la session
+    // $_SESSION['username'] = 'JohnDoe';
+    // $_SESSION['role'] = 'admin';
+    // var_dump($_SESSION);
+    ?>
 
 <a href="autre-page.php">Aller à une autre page</a> -->
 
-<!-- 
+    <!-- 
 Exercice 1 : Stocker le prénom de l'utilisateur
 Créez un formulaire dans un fichier who-are-you.php qui demande à l'utilisateur de saisir son prénom et son age.
 Lorsque le formulaire est soumis, stockez le prénom et l'âge dans la session.
@@ -66,22 +69,27 @@ Le texte doit être affiché dans la couleur choisie par l'utilisateur (utilisez
 
 La couleur doit rester affichée même après un rechargement de la page ! -->
 
-<?php 
-session_start();
-$_SESSION['couleur'] = 'Billy';
-
-var_dump($_SESSION); ?>
-
-<form action="autre-page.php" method="get">
-    <input type="text" name="age" placeholder="Entrez votre âge " <?=$_GET['age']?> >
-    <input type="text" name="name" placeholder="Entrez votre nom " <?=$_GET['name']?> >
-
-    <button type="submit">Envoyer</button>
-</form>
+    <?php
+    session_start();
+    $_SESSION['colors'] = [
+        'vert' => 'green',
+        'bleu' => 'blue',
+        'rouge' => 'red'
+    ];
 
 
+    var_dump($_SESSION); ?>
+
+    <form action="index.php" method="get">
+        <input type="text" name="colors" placeholder="Entrez votre couleur ici " <?= $_GET['colors'] ?>>
+         <label for="">choisissez votre couleur préférée entre le vert, bleu et le rouge</label>
+        <button type="submit">Envoyer</button>
+    </form>
+
+<span>votre couleur préferée est : <?= $_GET['colors'] ?> </span>
 
 </body>
+
 </html>
 
 <!-- Session PHP -->
