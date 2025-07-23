@@ -85,9 +85,11 @@ La couleur doit rester affichée même après un rechargement de la page ! -->
          <label for="">choisissez votre couleur préférée entre le vert, bleu et le rouge</label>
         <button type="submit">Envoyer</button>
     </form>
+<?php if ($_GET['colors']) {
+//   si l'utilisateur écris une couleur le span apparait dans telle couleur
 
-<span>votre couleur préferée est : <?= $_GET['colors'] ?> </span>
-
+} ?>
+ <span>votre couleur préferée est : <?= $_GET['colors'] ?> </span>
 </body>
 
 </html>
