@@ -7,7 +7,29 @@
     <title>Document</title>
 </head>
 
-<body>
+    <?php
+
+    // $_GET['nom']  
+
+    $colorMap = [
+        'vert' => 'green',
+        'bleu' => 'blue',
+        'rouge' => 'red'
+    ];
+   $css = $colorMap [$_GET['couleur']];
+
+    // This will evaluate to TRUE so the text will be printed.
+    if (isset($_GET['couleur']) && isset($colorMap)) {
+
+        echo '<a href="index.php?couleur=vert" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">Vert</a>';
+        echo '<a href="index.php?couleur=bleu" style="background-color:' .    $css . ';text-align : center; padding-top: 50px;">bleu</a>';
+        echo '<a href="index.php?couleur=rouge" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">rouge</a>';
+    }
+
+    // var_dump($bgColor);
+    ?>
+
+<body style="background-color: <?=$css ?>; text-align : center; padding-top: 50px;">
 
     <!-- <a href="page.php?nom=Jean&age=25">Voir profil</a> -->
     <?php
@@ -30,28 +52,6 @@ Créez une page avec trois liens :
 ?couleur=bleu
 Affichez la couleur choisie sur la page en background-color. utiliser isset pour l'exo -->
 
-
-    <?php
-
-    // $_GET['nom']  
-
-    $colorMap = [
-        'vert' => 'green',
-        'bleu' => 'blue',
-        'rouge' => 'red'
-    ];
-   $css = $colorMap [$_GET['couleur']];
-
-    // This will evaluate to TRUE so the text will be printed.
-    if (isset($_GET['couleur']) && isset($colorMap)) {
-
-        echo '<a href="index.php?couleur=vert" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">Vert</a>';
-        echo '<a href="index.php?couleur=bleu" style="background-color:' .    $css . ';text-align : center; padding-top: 50px;">bleu</a>';
-        echo '<a href="index.php?couleur=rouge" style="background-color:' .   $css . ';text-align : center; padding-top: 50px;">rouge</a>';
-    }
-
-    // var_dump($bgColor);
-    ?>
 
     <!-- //<body style="background-color: <?= $couleur ?>; text-align : center; padding-top: 50px;">. C'est mon code. Il faut que tu créés bien tes variables couleurs au préalable
 // si user touche r le background color devient rouge
