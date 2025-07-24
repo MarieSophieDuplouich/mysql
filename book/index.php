@@ -23,9 +23,32 @@ var_dump(($livres_tableau));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Book</title>
 </head>
 <body>
+
+<!-- le remplacer par foreach -->
+<h1>A Fancy Table</h1>
+
+<table id="customers">
+  <tr>
+    <th>Auteur</th>
+    <th>Titre livre</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbköp</td>
+    <td>Christina Berglund</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbköp</td>
+    <td>Christina Berglund</td>
+  </tr>
+</table>
 
 </body>
 </html>
