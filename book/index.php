@@ -1,54 +1,54 @@
-    
-<?php
+    <?php
 
-// 1 connexion
+    // 1 connexion
 
-$database = new PDO("mysql:host=127.0.0.1; dbname=app-database", "root", "root");
-
-
-//2 requête 
-$requete = $database->query("SELECT * FROM Book"); //STRING
-
-//3 reponse (array tableau foreach)
-
-$livres_tableau = $requete ->fetchAll();
-
-var_dump(($livres_tableau));
-
-?>
+    $database = new PDO("mysql:host=127.0.0.1; dbname=app-database", "root", "root");
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Book</title>
-</head>
-<body>
+    //2 requête 
+    $requete = $database->query("SELECT * FROM Book"); //STRING
 
-<!-- le remplacer par foreach -->
-<h1>A Fancy Table</h1>
+    //3 reponse (array tableau foreach)
 
-<table id="customers">
-  <tr>
-    <th>Auteur</th>
-    <th>Titre livre</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-  </tr>
-</table>
+    $livres_tableau = $requete->fetchAll();
+    var_dump(($livres_tableau));
 
-</body>
-</html>
+
+    ?>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Book</title>
+    </head>
+
+    <body>
+
+        <!-- le remplacer par foreach -->
+        <h1>A Fancy Table</h1>
+
+
+
+        <!-- // foreach
+// La boucle foreach est une autre façon de parcourir les éléments d'un tableau. Elle est plus simple et plus lisible que la boucle for pour ce type de tâche. -->
+        <table id="customers">
+            <tr>
+                <th>Auteur</th>
+                <th>Titre livre</th>
+            </tr>
+            <?php foreach ($livres_tableau as $livre): ?>
+                <tr>
+                    <td><?= $livre['auteur'] ?></td>
+                    <td><?= $livre['nom-livre'] ?></td>
+                <tr>
+                  <?php endforeach ?>      
+        </table>
+
+    </body>
+
+    </html>
