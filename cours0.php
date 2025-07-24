@@ -29,7 +29,7 @@
     // var_dump($bgColor);
     ?>
 
-<!-- <body style="background-color: <?=$css ?>; text-align : center; padding-top: 50px;"> -->
+<body style="background-color: <?=$css ?>; text-align : center; padding-top: 50px;">
 <body>
 
     <!-- <a href="page.php?nom=Jean&age=25">Voir profil</a> -->

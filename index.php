@@ -74,22 +74,27 @@ La couleur doit rester affichée même après un rechargement de la page ! -->
     $_SESSION['colors'] = [
         'vert' => 'green',
         'bleu' => 'blue',
-        'rouge' => 'red'
+        'rouge' => 'red',
+        'violet' => 'violet',
+        'violet foncé' =>'purple',
+        'or' => 'gold'
     ];
-
-
-    var_dump($_SESSION); ?>
-
+    ?>
+    <?php if (isset($_GET['colors']) && array_key_exists($_GET['colors'], $_SESSION['colors'])) {
+        $couleur_anglaise = $_SESSION['colors'][$_GET['colors']];
+        echo "<span style='background-color: $couleur_anglaise; 
+        text-align: center; 
+        padding: 20px; display: 
+        block; margin-top: 20px;'>Votre couleur préférée est : " . $_GET['colors'] . "</span>";
+    } ?>
+    <!-- mettre une value -->
     <form action="index.php" method="get">
-        <input type="text" name="colors" placeholder="Entrez votre couleur ici " <?= $_GET['colors'] ?>>
-         <label for="">choisissez votre couleur préférée entre le vert, bleu et le rouge</label>
+        <input type="text" name="colors" placeholder="Entrez votre couleur ici " value="<?= isset($_GET['colors']) ? $_GET['colors'] : '' ?>">
+        <label for="">choisissez votre couleur préférée entre le vert, bleu et le rouge</label>
         <button type="submit">Envoyer</button>
     </form>
-<?php if ($_GET['colors']) {
-//   si l'utilisateur écris une couleur le span apparait dans telle couleur
 
-} ?>
- <span>votre couleur préferée est : <?= $_GET['colors'] ?> </span>
+
 </body>
 
 </html>
