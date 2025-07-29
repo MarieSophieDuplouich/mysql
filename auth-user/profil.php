@@ -13,9 +13,9 @@ function connect() {
 }
 
 // Ajouter un utilisateur
-function add_user($pdo, $name, $photo) {
-    $stmt = $pdo->prepare("INSERT INTO user_sept (name, photo) VALUES (?, ?)");
-    $stmt->execute([$name, $photo]);
+function add_user($pdo, $name, $photo, $password, $email) {
+    $stmt = $pdo->prepare("INSERT INTO user_sept ( name , photo ,password , email) VALUES (?,?,?,?,?)");
+    $stmt->execute([$name, $photo, $password, $email]);
     return $pdo->lastInsertId();
 
     
@@ -31,7 +31,7 @@ function getUserById($pdo, $id) {
 
 if(isset($_POST['name']) && isset($_POST['photo'])) {
     $pdo = new PDO("mysql:host=127.0.0.1;dbname=app-database", "root", "root");
-    $user_id = add_user($pdo, $_POST['name'], $_POST['photo']);
+    $user_id = add_user($pdo, $_POST['name'], $_POST['photo'],$_POST['password'],$_POST['email']);
     $_SESSION['user_id'] = $user_id;
 }
 
@@ -58,17 +58,20 @@ if(isset($_SESSION['user_id'])){
     <title>Document</title>
 </head>
 <body>
+       <a href="inscription.php">S'inscrire</a>
+    <a href="seconnecter.php">Se connecter</a>
    <!-- //4. Afficher le profil de l'utilisateur
 // Sur la page profil.php, on utilise la clé user_id de la session pour afficher les informations de l'utilisateur connecté : -->
 
-
+<?php     var_dump($user['name']); ?>
 <?php if ($user != null): ?>
     <div class="profile">
         <h1>Profil de <?php echo htmlspecialchars($user['name']); ?></h1>
         <img src="<?php echo htmlspecialchars($user['photo']); ?>" alt="Photo de profil">
-    </div>
+    </div> 
 <?php else: ?>
     <p>Aucun utilisateur connecté.</p>
+
 <?php endif; ?>
 
 </body>
