@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>accueil exo</title>
+    <title>Accueil</title>
 </head>
 <body>
-    bienvenue index php
+    <a href="inscription.php">S'inscrire</a>
+    <a href="login.php">Se connecter</a>
 </body>
 </html>

@@ -1,29 +1,35 @@
 <?php
 session_start();
 
-if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $username = $_POST['email'];
-    $password = $_POST['password'];
 
-    // sécuriser un mot de passe?
-     $jeton = password_hash($password, PASSWORD_DEFAULT);
-
-    if ($password === 'Boubouestgrand34000PPP!!!') {
-        // Authentification réussie, stocker l'utilisateur dans la session
-        $_SESSION['email'] = $email;
-        header('Location: admin-page.php'); // Rediriger vers le tableau de bord
-        exit();
-    }
-
-    else {
-        echo "incorrect password";
-    }
+if(
+    isset($_POST["email"]) && 
+    isset($_POST["password"])
+){
+    $database = new PDO("mysql:host=127.0.0.1;dbname=app-database","root","root");
+    $request = $database->prepare("SELECT * FROM Userss WHERE email=?");
+    $request->execute([
+        $_POST["email"]
+    ]);
+    $user = $request->fetch(PDO::FETCH_ASSOC);
+    var_dump($user);
 }
+
 ?>
-<a href="admin-page.php">Si vous etes déjà connecté rendez-vous sur la page admin</a>
-<form method="POST" action="">
-    <input type="text" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Mot de passe" required>
-    <button type="submit">Se connecter</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Se connecter</h1>
+    <form action="" method="post">
+        <input type="email" name="email" placeholder="votre email...">
+        <input type="password" name="password" placeholder="votre mot de passe...">
+        <button>Se connecter</button>
+    </form>
+</body>
+</html>
 
