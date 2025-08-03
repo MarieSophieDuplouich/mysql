@@ -70,30 +70,86 @@ Le texte doit être affiché dans la couleur choisie par l'utilisateur (utilisez
 La couleur doit rester affichée même après un rechargement de la page ! -->
 
     <?php
-    session_start();
-    $_SESSION['colors'] = [
-        'vert' => 'green',
-        'bleu' => 'blue',
-        'rouge' => 'red',
-        'violet' => 'violet',
-        'violet foncé' =>'purple',
-        'or' => 'gold'
-    ];
-    ?>
-    <?php if (isset($_GET['colors']) && array_key_exists($_GET['colors'], $_SESSION['colors'])) {
-        $couleur_anglaise = $_SESSION['colors'][$_GET['colors']];
-        echo "<span style='background-color: $couleur_anglaise; 
-        text-align: center; 
-        padding: 20px; display: 
-        block; margin-top: 20px;'>Votre couleur préférée est : " . $_GET['colors'] . "</span>";
-    } ?>
-    <!-- mettre une value -->
-    <form action="index.php" method="get">
-        <input type="text" name="colors" placeholder="Entrez votre couleur ici " value="<?= isset($_GET['colors']) ? $_GET['colors'] : '' ?>">
-        <label for="">choisissez votre couleur préférée entre le vert, bleu et le rouge</label>
-        <button type="submit">Envoyer</button>
-    </form>
+    // session_start();
+    // $_SESSION['colors'] = [
+    //     'vert' => 'green',
+    //     'bleu' => 'blue',
+    //     'rouge' => 'red',
+    //     'violet' => 'violet',
+    //     'violet foncé' =>'purple',
+    //     'or' => 'gold'
+    // ];
+    // ?>
+     <?php //if (isset($_GET['colors']) && array_key_exists($_GET['colors'], $_SESSION['colors'])) {
+    //     $couleur_anglaise = $_SESSION['colors'][$_GET['colors']];
+    //     echo "<span style='background-color: $couleur_anglaise; 
+    //     text-align: center; 
+    //     padding: 20px; display: 
+    //     block; margin-top: 20px;'>Votre couleur préférée est : " . $_GET['colors'] . "</span>";
+    // } ?>
+   <!-- mettre une value -->
+    <!-- // <form action="index.php" method="get">
+    //     <input type="text" name="colors" placeholder="Entrez votre couleur ici " value="< //isset($_GET['colors']) ? $_GET['colors'] : '' ?>">
+    //     <label for="">choisissez votre couleur préférée entre le vert, bleu et le rouge</label>
+    //     <button type="submit">Envoyer</button>
+    // </form> -->
 
+<?php //$result = addition(5, 10); // Affiche 15
+//echo $result;
+//function addition($a, $b) {
+ //$result =  $a + $b;
+    //return $result;
+//} 
+//var_dump($result);
+?>
+
+<?php 
+
+
+class Lasagna
+{
+    public function expectedCookTime()
+    {
+        // Implement the expectedCookTime method
+      return 40;
+    }
+
+    public function remainingCookTime($elapsed_minutes)
+    {
+        // Implement the remainingCookTime method
+         return $this->expectedCookTime() - $elapsed_minutes;
+    }
+
+    public function totalPreparationTime($layers_to_prep)
+    {
+        // Implement the totalPreparationTime method
+       return $layers_to_prep * 2;
+    }
+
+    public function totalElapsedTime($layers_to_prep, $elapsed_minutes)
+    {
+        // Implement the totalElapsedTime method
+
+ return $this->totalPreparationTime($layers_to_prep) + $elapsed_minutes;
+    }
+
+    public function alarm()
+    {
+  return "Ding!";
+        // Implement the alarm method
+    }
+}
+
+
+$timer = new Lasagna();
+
+echo "Temps de cuisson attendu : " . $timer->expectedCookTime() . " minutes\n";
+echo "Temps restant (après 30 min) : " . $timer->remainingCookTime(30) . " minutes\n";
+echo "Temps de préparation (3 couches) : " . $timer->totalPreparationTime(3) . " minutes\n";
+echo "Temps total écoulé : " . $timer->totalElapsedTime(3, 20) . " minutes\n";
+echo "Alarme : " . $timer->alarm() . "\n";
+
+?>
 
 </body>
 
